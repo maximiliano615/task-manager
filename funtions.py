@@ -46,7 +46,31 @@ def save(list_task):
     else:
         save_task_json(list_task)
 
-list_task = Task(task)
-list_task.mark_progress(progress_task)
+class eliminate_task:
+    def __init__(self,task):
+        self.task = task
 
-save(list_task.to_dict(progress_task))
+    def eliminate(self,task):
+        list_task = read_task_json()
+        if task in list_task:
+            del list_task[task]
+            #print(list_task)
+            save_task_json(list_task)
+            print('tarea eliminada')
+        else:
+            print('no existe esa tarea')
+
+
+
+
+prueba = eliminate_task(task)
+prueba.eliminate(task)
+
+
+
+
+
+#list_task = Task(task)
+#list_task.mark_progress(progress_task)
+
+#save(list_task.to_dict(progress_task))
